@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/ico.ico" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" id="dark-mode-css">
+  
+  <style>
+    body {
+      transition: background-color 0.5s ease;
+    }
+
+    .sidebar-item.active .sidebar-link {
+      background-color: transparent;
+    }
+
+    .dark-mode {
+      background-color: #000000;
+      color: #fff;
+    }
+
+    .container {
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    .left-sidebar,
+    .app-header,
+    .page-wrapper {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode .left-sidebar,
+    .dark-mode .app-header,
+    .dark-mode .page-wrapper {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .left-sidebar {
+      transition: background-color 0.5s ease;
+      background: linear-gradient(to bottom, #089bfe, #089ff4, #0c2d74, #0b0b18);
+    }
+    .left-sidebar.sidebar-degrade {
+      background: linear-gradient(to bottom, #000, #000);
+    }
+
+    /* Adicione outros estilos específicos do modo escuro aqui */
+    
+        .sidebar-item a {
+      color: #fff !important;
+    }
+
+    .sidebar-item a:hover {
+      color: #aaa !important;
+    }
+
+    .sidebar-item .hide-menu {
+  color: #fff !important;
+    }
+
+    .dark-mode .navbar-nav .nav-link {
+      color: #fff;
+    }
+    
+    .dark-mode .navbar-nav .nav-link:hover {
+      color: #aaa;
+    }
+    
+    /* Adicione esta regra para definir a cor do texto */
+    .dark-mode,
+    .dark-mode h1,
+    .dark-mode p,
+    .dark-mode a {
+      color: #fff;
+    }
+  
+    
+    /* Estilize os botões */
+    .sidebar-link button {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    
+    #dark-mode-toggle {
+      margin-bottom: 5px;
+    }
+    
+    #sidebar-degrade-toggle {
+      margin-top: 5px;
+    }
+    .btn:active {
+      background-color: #ccc;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/logohd_-_Copia_ZUADO_1-removebg.png" width="180" alt="" id="logo-light" />
+            <img src="../assets/images/logos/logohd_-_Copia_ZUADO_1-removebg.png" width="180" alt="" id="logo-dark" style="display: none;" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu" style="color: #fff;">Estilo</span>
+            </li>
+            <li class="">
+              <a class="sidebar-link">
+                <button id="dark-mode-toggle" class="btn btn-outline-light">Ativar Modo escuro</button>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar-link">
+                <button id="sidebar-degrade-toggle" class="btn btn-outline-light"> Tirar Degradê</button>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu" style="color: #fff;">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false" style="background-color: transparent">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu" >Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./cadproposta.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Cadastro</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./acproposta.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>                
+                </span>
+                <span class="hide-menu">Propostas</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu" style="color: #fff;">FINANCEIRO</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./financeiro.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-brand-mastercard"></i>               
+                </span>
+                <span class="hide-menu">Plataformas</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu" style="color: #fff;">Graficos</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./TESTE.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-brand-mastercard"></i>               
+                </span>
+                <span class="hide-menu">Grafana</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu" style="color: #fff;">AUTH</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Login</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header End -->
+      <!--  Content Starts -->
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed"></div>
+      <div class="position-relative overflow-hidden min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="row justify-content-center w-100">
+            <div class="col-md-8 col-lg-6 col-xxl-3">
+                  <h1>Hello, world!</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      <!--  Content Ends -->
+    </div>
+    <!--  End Main wrapper -->
+  </div>
+  <!--  End Body Wrapper -->
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      'use strict'
+
+      var forms = document.querySelectorAll('.needs-validation')
+
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const logoLight = document.getElementById('logo-light');
+    const logoDark = document.getElementById('logo-dark');
+
+    darkModeToggle.addEventListener('click', () => {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = 'Ativar Light Mode';
+        logoLight.style.display = 'none';
+        logoDark.style.display = 'block';
+      } else {
+        darkModeToggle.textContent = 'Ativar Dark Mode';
+        logoLight.style.display = 'block';
+        logoDark.style.display = 'none';
+      }
+    });
+
+    const sidebarDegradeToggle = document.getElementById('sidebar-degrade-toggle');
+    const leftSidebar = document.querySelector('.left-sidebar');
+
+    sidebarDegradeToggle.addEventListener('click', () => {
+      leftSidebar.classList.toggle('sidebar-degrade');
+
+      if (leftSidebar.classList.contains('sidebar-degrade')) {
+        sidebarDegradeToggle.textContent = 'Ativar Degradê';
+      } else {
+        sidebarDegradeToggle.textContent = 'Tirar Degradê';
+      }
+    });  
+  </script>
+</body>
+</html>
