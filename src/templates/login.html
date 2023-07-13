@@ -8,6 +8,11 @@
   <link rel="shortcut icon" type="image/png" href= {{ url_for('static', filename="/images/logos/ico.ico") }} />
   <link rel="stylesheet" href= {{ url_for('static', filename="/css//styles.min.css") }} />
   <link rel="style" href= {{ url_for('static', filename="/css/styles.min.css") }} >
+  <script type="text/python" src="{{url_for('static', filename='scripts/login.py')}}">
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+</script>
   <style>
     .body
   {
@@ -17,7 +22,7 @@
   </style>
 </head>
 
-<body>
+<body onload="brython()">
   <!--  Body Wrapper -->
   
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
