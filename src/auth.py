@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 @auth.get('/login')
 def login():
     if current_user.is_authenticated:
-        return 'já logou'
+        return redirect(url_for('views.index'))
     form = LoginForm()
     return render_template('login.html', form=form)
 
@@ -33,7 +33,7 @@ def login_post():
 @auth.get('/registrar')
 def registrar():
     form = RegisForm()
-    return render_template('authentication-register.html', form=form)
+    return render_template('criarusuario.html', form=form)
 
 
 @auth.post('/registrar')
@@ -41,7 +41,7 @@ def registrar_post():
     form = RegisForm()
     if form.validate():
         return f'{form.nome.data}'
-    return render_template('authentication-register.html', form=form)
+    return render_template('criarusuario.html', form=form)
 
 
 @auth.route('/logout')

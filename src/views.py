@@ -10,5 +10,11 @@ def index():
     return render_template('index.html')
 
 
+@views.route('/vender')
+@login_required
+def vender():
+    return render_template('cadproposta.html')
+
+
 def configure(app):
     app.register_blueprint(views)
