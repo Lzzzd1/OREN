@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "crm"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^2.3.2"
+wtforms = "^3.0.1"
+flask-wtf = "^1.1.1"
+flask-sqlalchemy = "^3.0.4"
+flask-migrate = "^4.0.4"
+flask-login = "^0.6.2"
+flask-admin = "^1.6.1"
+flask-debugtoolbar = "^0.13.1"
+dynaconf = "^3.1.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
