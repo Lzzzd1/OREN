@@ -5,8 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/ico.ico" />
-  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="shortcut icon" type="image/png" href= {{ url_for('static', filename="/images/logos/ico.ico") }} />
+  <link rel="stylesheet" href= {{ url_for('static', filename="/css//styles.min.css") }} />
+  <link rel="style" href= {{ url_for('static', filename="/css/styles.min.css") }} >
   <style>
     .body
   {
@@ -29,7 +30,7 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="../assets/images/logos/logohd.png" width="180" alt="">
+                  <img src= {{ url_for('static', filename="images/logos/logohd_-_Copia_ZUADO_1-removebg.png") }} width="180" alt="" id="logo-dark" style="display: none;" />                  width="180" alt="">
                 </a>
                 <p class="text-center">Que seu dia seja abençoado</p>
                 <form action="{{ url_for('auth.login_post') }}" method="POST">
@@ -59,8 +60,14 @@
       </div>
     </div>
   </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src= {{ url_for('static', filename="js/vendor.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="libs/jquery/dist/jquery.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="libs/bootstrap/dist/js/bootstrap.bundle.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="js/sidebarmenu.js") }} ></script>
+  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="libs/apexcharts/dist/apexcharts.min.js") }} ></script>
+  <script src= {{ url_for('static', filename="libs/simplebar/dist/simplebar.js") }} ></script>
 </body>
 
 </html>
