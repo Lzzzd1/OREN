@@ -7,9 +7,9 @@ from flask_login import current_user
 
 
 class MyAdminIndexView(AdminIndexView):
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.hierarquia >= 4
-
+    # def is_accessible(self):
+    #     return current_user.is_authenticated and current_user.hierarquia >= 4
+    ...
 
 admin = Admin(name='Administrador', template_mode='bootstrap3', index_view=MyAdminIndexView())
 
@@ -24,8 +24,9 @@ class UsersView(ModelView):
     def _on_model_change(self, form, model, is_created):
         model.senha = generate_password_hash(model.senha, method='sha512')
 
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.hierarquia >= 4
+    # def is_accessible(self):
+    #     return current_user.is_authenticated and current_user.hierarquia >= 4
+
 
 admin.add_view(UsersView(Users, db.session))
 
