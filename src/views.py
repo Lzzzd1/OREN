@@ -16,5 +16,11 @@ def vender():
     return render_template('cadproposta.html')
 
 
+@views.route('/propostas')
+@login_required
+def propostas():
+    return render_template('acproposta.html')
+
+
 def configure(app):
     app.register_blueprint(views)
