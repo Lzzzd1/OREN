@@ -1,7 +1,7 @@
 from flask import Blueprint, current_app
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-from .models import Users, db
+from models import Users, db
 from werkzeug.security import generate_password_hash
 from flask_login import current_user
 
