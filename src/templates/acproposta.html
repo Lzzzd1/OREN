@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vendas total</title>
-  <link rel="shortcut icon" type="image/png" href= {{ url_for('static', filename="/images/logos/ico.ico") }} />
-  <link rel="stylesheet" href= {{ url_for('static', filename="/css//styles.min.css") }} />
+  <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
+  <link rel="stylesheet" href= "{{ url_for('static', filename='/css//styles.min.css') }}" />
   <style>
     .input-wrapper::before {
       content: "R$";
@@ -427,108 +427,9 @@
 </head>
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <!-- Sidebar Start -->
-    <aside class="left-sidebar">
-      <!-- Sidebar scroll-->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src= {{ url_for('static', filename="images/logos/logohd_-_Copia_ZUADO_1-removebg.png") }}  width="180" alt="" id="logo-light" />
-            <img src= {{ url_for('static', filename="images/logos/logohd_-_Copia_ZUADO_1-removebg.png") }} width="180" alt="" id="logo-dark" style="display: none;" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div>
-        </div>
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu" style="color: #fff;">Estilo</span>
-            </li>
-            <li class="">
-              <a class="sidebar-link">
-                <button id="dark-mode-toggle" class="btn btn-outline-light">Ativar Modo escuro</button>
-              </a>
-            </li>
-            <li>
-              <a class="sidebar-link">
-                <button id="sidebar-degrade-toggle" class="btn btn-outline-light"> Tirar Degradê</button>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu" style="color: #fff;">Home</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false" style="background-color: transparent">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                <span class="hide-menu" >Dashboard</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./cadproposta.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                </span>
-                <span class="hide-menu">Cadastro</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./acproposta.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-article"></i>                
-                </span>
-                <span class="hide-menu">Propostas</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu" style="color: #fff;">FINANCEIRO</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./financeiro.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-brand-mastercard"></i>               
-                </span>
-                <span class="hide-menu">Plataformas</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu" style="color: #fff;">Graficos</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./TESTE.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-brand-mastercard"></i>               
-                </span>
-                <span class="hide-menu">Grafana</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu" style="color: #fff;">AUTH</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./login.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <!--  Header End -->
-      <!--  Content Starts -->
-      <div class="container-fluid">
+{% include 'sidebar.html' %}
+
+        <div class="container-fluid">
         <div class="row">
           <div class="col-xl-12">      
             <br> 
@@ -538,12 +439,12 @@
                         <h1 class="text-center">PROPOSTAS </h1>
                       </div>     
                       <br>
-                      <div class="alert alert-success" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-danger" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-success" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-danger" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-success" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-danger" role="alert"> {{ Plataforma }} {{N* de matricula }} {{CPF}}  {{nome}} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                      <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
                 </div>
             </div>
           </div>
@@ -554,14 +455,14 @@
     <!--  End Main wrapper -->
   </div>
   <!--  End Body Wrapper -->
-  <script src= {{ url_for('static', filename="js/vendor.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/jquery/dist/jquery.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/bootstrap/dist/js/bootstrap.bundle.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/sidebarmenu.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/apexcharts/dist/apexcharts.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/simplebar/dist/simplebar.js") }} ></script>
+  <script src= "{{ url_for('static', filename='js/vendor.min.js') }}" ></script>
+  <script src= "{{ url_for('static', filename='js/app.min.js') }}" ></script>
+  <script src=" {{ url_for('static', filename='libs/jquery/dist/jquery.min.js') }}" ></script>
+  <script src= "{{ url_for('static', filename='libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}" ></script>
+  <script src= "{{ url_for('static', filename='js/sidebarmenu.js') }}" ></script>
+  <script src= "{{ url_for('static', filename='js/app.min.js') }}" ></script>
+  <script src= "{{ url_for('static', filename='libs/apexcharts/dist/apexcharts.min.js') }}" ></script>
+  <script src=" {{ url_for('static', filename='libs/simplebar/dist/simplebar.js') }}" ></script>
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
