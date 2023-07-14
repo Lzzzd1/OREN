@@ -1,0 +1,89 @@
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  body {
+    transition: background-color 0.5s ease;
+  }
+
+  .dark-mode {
+    background-color: #000000;
+    color: #fff;
+  }
+
+  .container {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .left-sidebar,
+  .app-header,
+  .page-wrapper {
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  .dark-mode .left-sidebar,
+  .dark-mode .app-header,
+  .dark-mode .page-wrapper {
+    background-color: #222;
+    color: #fff;
+  }
+
+  .left-sidebar {
+    transition: background-color 0.5s ease;
+    background: linear-gradient(to bottom, #089bfe, #089ff4, #0c2d74, #0b0b18);
+  }
+  .left-sidebar.sidebar-degrade {
+    background: linear-gradient(to bottom, #000, #000);
+  }
+
+  /* Adicione outros estilos específicos do modo escuro aqui */
+  
+      .sidebar-item a {
+    color: #fff !important;
+  }
+
+  .sidebar-item a:hover {
+    color: #aaa !important;
+  }
+
+  .sidebar-item .hide-menu {
+color: #fff !important;
+  }
+
+  .dark-mode .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  .dark-mode .navbar-nav .nav-link:hover {
+    color: #aaa;
+  }
+  
+  /* Adicione esta regra para definir a cor do texto */
+  .dark-mode,
+  .dark-mode h1,
+  .dark-mode p,
+  .dark-mode a {
+    color: #fff;
+  }
+
+  
+  /* Estilize os botões */
+  .sidebar-link button {
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  
+  #dark-mode-toggle {
+    margin-bottom: 5px;
+  }
+  
+  #sidebar-degrade-toggle {
+    margin-top: 5px;
+  }
+  .btn:active {
+    background-color: #ccc;
+  }
