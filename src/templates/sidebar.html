@@ -51,7 +51,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{url_for('auth.registrar')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{url_for('views.vender')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
@@ -95,13 +95,22 @@
               <span class="hide-menu" style="color: #fff;">AUTH</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{url_for('auth.logout')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
-                <span class="hide-menu">Login</span>
+                <span class="hide-menu">logout</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{url_for('auth.registrar')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Registrar</span>
+              </a>
+            </li>
+
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -109,4 +118,4 @@
       <!-- End Sidebar scroll-->
     </aside>
     <script src="{{ url_for('static', filename='js/app.min.js') }}" ></script>
-  
+
