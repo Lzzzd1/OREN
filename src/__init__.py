@@ -1,11 +1,11 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_debugtoolbar import DebugToolbarExtension
-from auth import configure as auth_config
-from views import configure as views_config
-from models import configure as db_config
-from adm import configure as adm_config
-from models import Users
+from src.auth import configure as auth_config
+from src.views import configure as views_config
+from src.models import configure as db_config
+from src.adm import configure as adm_config
+from src.models import Users
 
 
 def create_app():
