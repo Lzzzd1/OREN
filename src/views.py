@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
+from forms import ClienteForm
 
 views = Blueprint('views', __name__)
 
@@ -13,7 +14,8 @@ def index():
 @views.route('/vender')
 @login_required
 def vender():
-    return render_template('cadproposta.html')
+    form = ClienteForm()
+    return render_template('cadproposta.html', form=form)
 
 
 @views.route('/propostas')

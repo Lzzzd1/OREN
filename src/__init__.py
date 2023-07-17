@@ -15,9 +15,9 @@ def create_app():
     db_config(app)
     app.config['DEBUG_TB_TEMPLATE_EDITOR_ENABLED'] = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-  #  app.debug = True
-   # toolbar = DebugToolbarExtension()
-    #toolbar.init_app(app)
+    app.debug = True
+    toolbar = DebugToolbarExtension()
+    toolbar.init_app(app)
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Você precisa estar logado!'

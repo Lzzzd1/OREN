@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro</title>
   <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
-  <link rel="stylesheet" href= "{{ url_for('static', filename='/css//styles.min.css') }}" />
+  <link rel="stylesheet" href= "{{ url_for('static', filename='/css/styles.min.css') }}" />
   <link rel="style" href= "{{ url_for('static', filename='/css/styles.min.css') }}" >
   <link rel="stylesheet" href="{{ url_for('static', filename='/css/dark-mode.css') }}"  id="dark-mode-css">
   <link rel="stylesheet" href="{{ url_for('static', filename='/css/sidebar.css') }}">
@@ -366,8 +366,6 @@
 #btnMostrarProposta {
   text-align: center;
 }
-
-
   </style>
 </head>
 <body>
@@ -412,13 +410,14 @@
                             <input class="entrada form-control text-center" type="text" id="telefone" placeholder="Digite o telefone" oninput="formatarTelefone()" required><span id="telefone-error" class="error-message"></span>
                           </div>
                         </div>
-                      </div>
-                      <div style="text-align: center;">
-                        <div class="form-group d-flex justify-content-center">
-                          <input class="entrada form-control text-center" type="text" id="rg" placeholder="Digite o RG" required><br>
                         </div>
-                      </div>   
-                    <br>               
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input class="entrada form-control text-center" type="text" id="rg" placeholder="Digite o RG" required>
+                          <br>
+                        </div>
+                      </div>
+                    <br>
                     <h3 style="text-align: center;">Endereço</h3>
                     <br>
                     <div class="row">
@@ -457,7 +456,7 @@
                         </div>
                       </div>
                     </div>
-                   </div>  
+                   </div>
                     <br>
                     <div id="divBotao">
                       <button class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Proposta</button>
@@ -518,15 +517,7 @@
     <!--  End Main wrapper -->
   </body>
   <!--  End Body Wrapper -->
-  <script src= {{ url_for('static', filename="js/vendor.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/jquery/dist/jquery.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/bootstrap/dist/js/bootstrap.bundle.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/sidebarmenu.js") }} ></script>
-  <script src= {{ url_for('static', filename="js/app.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/apexcharts/dist/apexcharts.min.js") }} ></script>
-  <script src= {{ url_for('static', filename="libs/simplebar/dist/simplebar.js") }} ></script>
-  
+
   <script>
 function mostrarProposta() {
   const divBotao = document.getElementById('divBotao');
