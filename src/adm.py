@@ -1,7 +1,7 @@
 from flask import Blueprint, current_app
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-from models import Users, db
+from src.models import Users, Telefone, Cliente, Venda, db
 from werkzeug.security import generate_password_hash
 from flask_login import current_user
 
@@ -11,14 +11,16 @@ class MyAdminIndexView(AdminIndexView):
     #     return current_user.is_authenticated and current_user.hierarquia >= 4
     ...
 
+
 admin = Admin(name='Administrador', template_mode='bootstrap3', index_view=MyAdminIndexView())
 
-# adm = Blueprint('adm', __name__)
 
-# with current_app.app_context():
+class MyView(ModelView):
+    column_display_all_relations = True
+    column_hide_backrefs = False
 
 
-class UsersView(ModelView):
+class UsersView(MyView):
     can_export = True
 
     def _on_model_change(self, form, model, is_created):
@@ -29,6 +31,9 @@ class UsersView(ModelView):
 
 
 admin.add_view(UsersView(Users, db.session))
+admin.add_view(MyView(Cliente, db.session, 'Cliente'))
+admin.add_view(MyView(Telefone, db.session, 'Telefone'))
+admin.add_view(MyView(Venda, db.session, 'Venda'))
 
 
 def configure(app):
