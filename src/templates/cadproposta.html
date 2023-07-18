@@ -1,535 +1,238 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro</title>
-  <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
-  <link rel="stylesheet" href= "{{ url_for('static', filename='/css/styles.min.css') }}" />
-  <link rel="style" href= "{{ url_for('static', filename='/css/styles.min.css') }}" >
-  <link rel="stylesheet" href="{{ url_for('static', filename='/css/dark-mode.css') }}"  id="dark-mode-css">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='/images/logos/ico.ico') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/styles.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='/css/sidebar.css') }}">
-
   <style>
-
-    .input-wrapper::before {
-      content: "R$";
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #000;
-      font-weight: bold;
-    }
-    .input-date {
-      width: 100%;
-    }
-    .input-box {
-      margin-bottom: 20px;
-    }
-    .gender-input {
-      margin-bottom: 20px;
-    }
-    .form-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .title h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 0;
-    }
-    
-    
-
-    .login-button button {
-      background-color: transparent;
-      border: none;
-      text-decoration: underline;
-      font-size: 14px;
-      color: #000;
-      cursor: pointer;
-      padding: 0;
-    }
-    .input-box label {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .input-box input {
-      width: 100%;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      padding: 8px;
-      font-size: 14px;
-    }
-    .gender-title h6 {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .gender-group {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .gender-input {
-      display: flex;
-      align-items: center;
-      margin-right: 16px;
-      font-size: 14px;
-    }
-    .gender-input input {
-      margin-right: 6px;
-    }
-
-    .dark-mode select.select-campanha {
-      background-color: #222;
-      color: #fff;
-      border-color: #ced4da;
-    }
-
-    .dark-mode select.select-campanha option {
-      background-color: #222;
-      color: #fff;
-    }
-
-    .dark-mode select.select-campanha:focus {
-      outline: none;
-      border-color: #089bfe;
-    }
-
-    .gender-input label {
-      font-size: 14px;
-    }
-    .continue-button button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .continue-button button:hover {
-      background-color: #0056b3;
-    }
-    .payment-platform {
-      margin-top: 20px;
-    }
-    .payment-platform label {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .payment-platform input {
-      margin-right: 6px;
-    }
-    .continue-button button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.continue-button button:hover {
-  background-color: #0056b3;
-}
-
-.centered {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    body {
-      transition: background-color 0.5s ease;
-    }
-
-    .dark-mode {
-      background-color: #000000;
-      color: #fff;
-    }
-    
-
-    .container {
-      margin-top: 100px;
-      text-align: center;
-    }
-
-    .left-sidebar,
-    .app-header,
-    .page-wrapper {
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    .dark-mode .left-sidebar,
-    .dark-mode .app-header,
-    .dark-mode .page-wrapper {
-      background-color: #222;
-      color: #fff;
-    }
-
-    .left-sidebar {
-      transition: background-color 0.5s ease;
-      background: linear-gradient(to bottom, #089bfe, #089ff4, #0c2d74, #0b0b18);
-    }
-    .left-sidebar.sidebar-degrade {
-      background: linear-gradient(to bottom, #000, #000);
-    }
-
-    /* Adicione outros estilos específicos do modo escuro aqui */
-    
-        .sidebar-item a {
-      color: #fff !important;
-    }
-
-    .sidebar-item a:hover {
-      color: #aaa !important;
-    }
-
-    .sidebar-item .hide-menu {
-   color: #fff !important;
-    }
-
-    .prefixo {
-  
- 
-    color: black; /* cor no modo claro */
-    }
-    
-    .prefixo.dark-mode {
-      
-    
-    color: white; /* cor no modo escuro */
-    }
-
-    .dark-mode .navbar-nav .nav-link {
-      color: #fff;
-    }
-    
-    .dark-mode .navbar-nav .nav-link:hover {
-      color: #aaa;
-    }
-    
-    /* Adicione esta regra para definir a cor do texto */
-    .dark-mode,
-    .dark-mode h1,
-    .dark-mode p,
-    .dark-mode a,
-    .dark-mode h6,
-    .dark-mode h3,
-    .dark-mode ::placeholder,
-    .dark-mode label{
-      color: #fff;
-    }
-
-    .dark-mode input[type="text"],
-    .dark-mode input[type="email"],
-    .dark-mode input[type="password"],
-    .dark-mode input[type="tel"],
-    .dark-mode textarea,
-    .dark-mode select {
-      color: white;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="tel"],
-    textarea,
-    select {
-      color: black;
-    }
-
-    input[type="text"]::placeholder,
-    input[type="email"]::placeholder,
-    input[type="password"]::placeholder,
-    input[type="tel"]::placeholder,
-    textarea::placeholder,
-    select::placeholder {
-     color: black;
-     border-color: black;
-
-    }
-
-    /* Estilos para modo normal */
-    select {
-      color: black;
-      border: 1px solid black;
-      background-color: white;
-    }
-
-    /* Estilos para modo dark */
-    body.dark-mode select {
-      color: white;
-      border: 1px solid white;
-      background-color: black;
-    }
-
-    
-
-    body.dark-mode input[type="text"]::placeholder,
-    body.dark-mode input[type="email"]::placeholder,
-    body.dark-mode input[type="password"]::placeholder,
-    body.dark-mode input[type="tel"]::placeholder,
-    body.dark-mode textarea::placeholder,
-    body.dark-mode select::placeholder {
-      color: white;
-      border-color: white;
-
-    }
-
     .dark-mode .card-body {
+      background-color: black;
       color: #fff;
     }
-    
-    .label{
-      color: #000;
-    }
-
-    .error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-  }
-    
-    /* Estilize os botões */
-    .sidebar-link button {
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-    
-    #dark-mode-toggle {
-      margin-bottom: 5px;
-    }
-    
-    #sidebar-degrade-toggle {
-      margin-top: 5px;
-    }
-    .btn:active {
-      background-color: #ccc;
-    }
-
-    .input-box input {
-      width: 80%; /* Reduzindo a largura dos campos de entrada */
-      max-width: 300px; /* Definindo a largura máxima */
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      padding: 8px;
-      font-size: 14px;
-    }
-    .error-message {
-    display: block;
-    color: red;
-    margin-top: 5px;
-   }
-   .continue-button {
-      text-align: center;
-    }
-
-    .continue-button button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .continue-button button:hover {
-      background-color: #0056b3;
-    }
-
-    .proposta {
-      display: none;
-    }
-    
-    .selecte{
-      display:flex;
-    }
-
-    .proposta.show {
-      display: block;
-    }
-    
-    #divBotao {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-#btnMostrarProposta {
-  text-align: center;
-}
   </style>
 </head>
 <body>
-   <!--  Body Wrapper -->
-{%include 'sidebar.html'%}    
-<!--  Sidebar End -->
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
-      <!--  Header End -->
-      <!--  Content Starts -->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-12">
-            <div class="car">
-              <div class="card-body">
-                <form id="formProposta" class="needs-validation" novalidate>
-                    <div class="clientes">
-                      <h3 style="text-align: center;">Cliente</h3>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input class="entrada form-control text-center" id="nome" type="text" placeholder="Nome Completo" required>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            
-                            <input class="entrada form-control text-center" type="text" id="cpf" placeholder="Digite o CPF "  required><span id="cpf-error" class="error-message"></span><br>
-                          </div>
-                        </div>
+  <!--  Body Wrapper -->
+  {% include 'sidebar.html' %}
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <!--  Header Start -->
+    <!--  Header End -->
+    <!--  Content Starts -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <form id="formProposta" class="needs-validation" novalidate>
+                <div class="clientes">
+                  <h3 style="text-align: center;">Cliente</h3>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" id="nome" type="text" placeholder="Nome Completo" required>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input class="entrada form-control text-center" id="email" type="email" placeholder="Email" required><br>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input class="entrada form-control text-center" type="text" id="telefone" placeholder="Digite o telefone" oninput="formatarTelefone()" required><span id="telefone-error" class="error-message"></span>
-                          </div>
-                        </div>
-                        </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" type="text" id="rg" placeholder="Digite o RG" required>
-                          <br>
-                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" type="text" id="cpf" placeholder="Digite o CPF" required><span id="cpf-error" class="error-message"></span><br>
                       </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" id="email" type="email" placeholder="Email" required><br>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" type="text" id="telefone" placeholder="Digite o telefone" oninput="formatarTelefone()" required><span id="telefone-error" class="error-message"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" type="text" id="rg" placeholder="Digite o RG" required>
+                        <br>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" type="date" id="nasc" placeholder="" required>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="telefones-adicionais"></div>
+                  <div id="divBotao" style="display: flex; justify-content: space-evenly" >
+                    <a class="btn btn-primary" onclick="adicionarTelefone()"><i class="ti ti-box-multiple"></i> Adicionar Mais Números</a>   
+                  </div>
+                  <div id="divBotao">
+                    <a class="btn btn-primary" id="btnMostrarEndereco" onclick="mostrarEndereco()">Próximo</a>
+                  </div>
+                  <br>
+                </div>
+                <div class="endereco" style="display: none;">
+                  <h3 style="text-align: center;">Endereço</h3>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" type="text" id="cep" maxlength="9" placeholder="CEP" autofocus required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" placeholder="UF" type="text" id="uf" required><br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" placeholder="Cidade" type="text" id="cidade" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" placeholder="Bairro" type="text" id="bairro" required><br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" placeholder="Numero da casa" type="text" id="casa" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="entrada form-control text-center" placeholder="Endereço" type="text" id="endereco" required><br>
+                      </div>
+                    </div>
+                    <div id="divBotao" style="display: flex; justify-content: space-evenly">
+                      <a class="btn btn-primary" id="btnVoltarCliente" onclick="voltarCliente()">Voltar</a><br>
+                      <a class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Próximo</a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="proposta1" style="display: none;">
+                  <div class="conteudo">
+                    <h3 style="text-align: center;">Proposta</h3>
+                    <div id="error-messages"></div>
                     <br>
-                    <h3 style="text-align: center;">Endereço</h3>
+                    <div class="selecte">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
+                            <option selected>Campanha</option>
+                            <option value="1">SDR</option>
+                            <option value="2">MRR</option>
+                            <option value="3">LP</option>
+                          </select>
+                        </div>
+                      </div><br>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
+                            <option selected>Plano</option>
+                            <option value="1">Emergencial</option>
+                            <option value="2">VIP</option>
+                            <option value="3">Tradicional</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                     <br>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" type="text" id="cep" maxlength="9" placeholder="CEP" autofocus required>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" placeholder="UF" type="text" id="uf" required><br>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" placeholder="Cidade" type="text" id="cidade" required>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" placeholder="Bairro" type="text" id="bairro" required><br>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" placeholder="Numero da casa" type="text" id="casan" required>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="entrada form-control text-center" placeholder="Endereço" type="text" id="endereco" required><br>
-                        </div>
-                      </div>
-                    </div>
-                   </div>
                     <br>
-                    <div id="divBotao">
-                      <button class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Proposta</button>
-                    </div>
-                    <div class="proposta1" style="display: none;">
-                      <div class="conteudo" >
-                        <h3 style="text-align: center;">Proposta</h3>
-                        <div id="error-messages"></div>
-                        <br>
-                        <div class="selecte">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
-                                <option selected>Campanha</option>
-                                <option value="1">SDR</option>
-                                <option value="2">MRR</option>
-                                <option value="3">LP</option>
-                              </select>
-                            </div>
-                          </div><br>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
-                                <option selected>Plano</option>
-                                <option value="1">Emergencial</option>
-                                <option value="2">VIP</option>
-                                <option value="3">Tradicional</option>
-                              </select>
-                            </div>
-                          </div>  
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <div style="text-align: center;">
-                          <div class="form-group d-flex justify-content-center">
-                            <input class="entrada form-control text-center" type="text" id="valor-proposta" placeholder="Digite o Valor do contrato" required><br>
-                          </div>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <div class="" style="text-align: center;" >
-                          <div class="form-group">
-                            <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
-                          </div>
-                        </div>
+                    <br>
+                    <div style="text-align: center;">
+                      <div class="form-group d-flex justify-content-center">
+                        <input class="entrada form-control text-center" type="text" id="valor-proposta" placeholder="Digite o Valor do contrato" required><br>
                       </div>
                     </div>
-                </form>
-              </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="" style="text-align: center;">
+                      <div id="divBotao" style="display: flex; justify-content: space-evenly">
+                        <a class="btn btn-primary" id="btnVoltarEndereco" onclick="voltarEndereco()">Voltar</a>
+                        <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <!--  Content Ends -->
     </div>
-    <!--  End Main wrapper -->
-  </body>
-  <!--  End Body Wrapper -->
-
+    <!--  Content Ends -->
+  </div>
+  <!--  End Main wrapper -->
   <script>
-function mostrarProposta() {
-  const divBotao = document.getElementById('divBotao');
-  const divProposta1 = document.querySelector('.proposta1');
-  const divClientes = document.querySelector('.clientes');
+    var telefoneCount = 1;
+  
+    function adicionarTelefone() {
+      var telefonesAdicionais = document.getElementById("telefones-adicionais");
+  
+      var divTelefone = document.createElement("div");
+      divTelefone.className = "form-group";
+      var inputTelefone = document.createElement("input");
+      inputTelefone.className = "entrada form-control text-center";
+      inputTelefone.type = "text";
+      inputTelefone.name = "telefone" + telefoneCount;
+      inputTelefone.placeholder = "Digite o telefone";
+      inputTelefone.required = true;
+  
+      divTelefone.appendChild(inputTelefone);
+      telefonesAdicionais.appendChild(divTelefone);
+  
+      telefoneCount++;
+    }
+  </script>
+  <script>
+ function mostrarEndereco() {
+      const divClientes = document.querySelector('.clientes');
+      const divEndereco = document.querySelector('.endereco');
 
-  divProposta1.style.display = 'block';
-  divClientes.style.display = 'none';
+      divClientes.style.display = 'none';
+      divEndereco.style.display = 'block';
+    }
 
-  divBotao.remove();
-}
+    function mostrarProposta() {
+      const divEndereco = document.querySelector('.endereco');
+      const divProposta = document.querySelector('.proposta1');
 
+      divEndereco.style.display = 'none';
+      divProposta.style.display = 'block';
+    }
+
+    function voltarCliente() {
+      const divClientes = document.querySelector('.clientes');
+      const divEndereco = document.querySelector('.endereco');
+
+      divClientes.style.display = 'block';
+      divEndereco.style.display = 'none';
+    }
+
+    function voltarEndereco() {
+      const divProposta = document.querySelector('.proposta1');
+      const divEndereco = document.querySelector('.endereco');
+
+      divProposta.style.display = 'none';
+      divEndereco.style.display = 'block';
+    }
   </script>
   <script>
     // Função para validar o número de telefone
@@ -829,4 +532,5 @@ function mostrarProposta() {
 </script>
 <script src="{{url_for('static', filename='/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </body>
+
 </html>
