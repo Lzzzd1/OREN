@@ -20,6 +20,10 @@ class MyView(ModelView):
     column_hide_backrefs = False
 
 
+class TelefoneView(ModelView):
+    column_list = ['telefone', 'cliente']
+
+
 class UsersView(MyView):
     can_export = True
 
@@ -32,7 +36,7 @@ class UsersView(MyView):
 
 admin.add_view(UsersView(Users, db.session))
 admin.add_view(MyView(Cliente, db.session, 'Cliente'))
-admin.add_view(MyView(Telefone, db.session, 'Telefone'))
+admin.add_view(TelefoneView(Telefone, db.session, 'Telefone'))
 admin.add_view(MyView(Venda, db.session, 'Venda'))
 
 
