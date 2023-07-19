@@ -16,7 +16,7 @@ class Users(db.Model, UserMixin):
     vendas = db.relationship('Venda', backref='user', lazy='dynamic')
 
     def __repr__(self):
-        return f'<User {self.id}>'
+        return f'User {self.nome}'
 
 
 class Cliente(db.Model):
@@ -32,8 +32,6 @@ class Cliente(db.Model):
     bairro = db.Column(db.String)
     rua = db.Column(db.String)
     numero = db.Column(db.Integer)
-    telefones = db.relationship('Telefone', backref='cliente', lazy='dynamic')
-    vendas = db.relationship('Venda', backref='cliente', lazy='dynamic')
 
     def __repr__(self):
         return f'Cliente: {self.nome[:10]}'
@@ -43,6 +41,9 @@ class Telefone(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     telefone = db.Column(db.String(13), index=True)
     cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
+
+    cliente = db.relationship('Cliente', backref='telefones')
+    vendas = db.relationship('Venda', backref='telefone')
 
     def __repr__(self):
         return f'Telefone: {self.telefone}'
@@ -104,6 +105,7 @@ class Venda(db.Model):
     canaldavenda_id = db.Column(db.Integer, db.ForeignKey(CanalDaVenda.id), nullable=False)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
+    cliente = db.relationship('Cliente', backref='vendas')
     pagamentos = db.relationship('Pagamento', backref='venda', lazy='dynamic')
 
 

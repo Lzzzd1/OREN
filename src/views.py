@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
-from forms import ClienteForm
+from src.forms import ClienteForm
 
 views = Blueprint('views', __name__)
 
