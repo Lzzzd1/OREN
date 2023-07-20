@@ -440,8 +440,12 @@
                         <h1 class="text-center">PROPOSTAS </h1>
                       </div>     
                       <br>
-                      <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
-                      <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
+                  {% for proposta in propostas %}
+                      <div class="alert alert-success" role="alert">{{proposta.cliente.cpf}} - {{proposta.cliente.nome}}
+                          - {{ proposta.produto.nome }} - R${{proposta.total}}
+                          <i class="ti ti-cloud-download"></i> </div>
+                  {% endfor %}
+                  <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div>
                       <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
                       <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
                       <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
@@ -452,9 +456,7 @@
         </div>
       </div>
       <!--  Content Ends -->
-    </div>
     <!--  End Main wrapper -->
-  </div>
   <!--  End Body Wrapper -->
   <script src= "{{ url_for('static', filename='js/vendor.min.js') }}" ></script>
   <script src= "{{ url_for('static', filename='js/app.min.js') }}" ></script>

@@ -122,6 +122,10 @@ class Venda(db.Model):
     vendedor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     cliente = db.relationship('Cliente', backref='vendas')
+    produto = db.relationship('Produto', backref='vendas')
+    origem = db.relationship('Origem', backref='vendas')
+    campanha = db.relationship('Campanha', backref='vendas')
+    canal = db.relationship('CanalDaVenda', backref='vendas')
     pagamentos = db.relationship('Pagamento', backref='venda', lazy='dynamic')
 
 
