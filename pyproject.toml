@@ -16,6 +16,7 @@ flask-login = "^0.6.2"
 flask-admin = "^1.6.1"
 flask-debugtoolbar = "^0.13.1"
 dynaconf = "^3.1.12"
+wtforms-sqlalchemy = "^0.3"
 
 
 [build-system]
