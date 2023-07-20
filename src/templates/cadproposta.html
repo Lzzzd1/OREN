@@ -36,37 +36,41 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input class="entrada form-control text-center" id="nome" type="text" placeholder="Nome Completo" required>
+                        {{ form.nome(class="entrada form-control text-center", placeholder=form.nome.label.text, required=True) }}
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input class="entrada form-control text-center" type="text" id="cpf" placeholder="Digite o CPF" required><span id="cpf-error" class="error-message"></span><br>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" id="email" type="email" placeholder="Email" required><br>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" type="text" id="telefone" placeholder="Digite o telefone" oninput="formatarTelefone()" required><span id="telefone-error" class="error-message"></span>
+                        {{ form.cpf(class="entrada form-control text-center", placeholder=form.cpf.label.text, required=True) }}
+                        <span id="cpf-error" class="error-message"></span><br>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input class="entrada form-control text-center" type="text" id="rg" placeholder="Digite o RG" required>
+                      {{ form.email(class="entrada form-control text-center", placeholder=form.email.label.text, required=True) }}
                         <br>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input class="entrada form-control text-center" type="date" id="nasc" placeholder="" required>
+                      {{ form.telefone(class="entrada form-control text-center", placeholder=form.telefone.label.text, oninput="validarTelefone()", required=True) }}
+                       <span id="telefone-error" class="error-message"></span>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      {{ form.rg(class="entrada form-control text-center", placeholder=form.rg.label.text, required=True) }}
+                        <br>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      {{ form.nasc(class="entrada form-control text-center", placeholder=form.nasc.label.text, required=True) }}
                         <br>
                       </div>
                     </div>
@@ -133,22 +137,12 @@
                     <div class="selecte">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
-                            <option selected>Campanha</option>
-                            <option value="1">SDR</option>
-                            <option value="2">MRR</option>
-                            <option value="3">LP</option>
-                          </select>
+                      {{ form.campanha(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
                         </div>
                       </div><br>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <select style="width: 90%;" class="entrada form-control text-center select-campanha" required>
-                            <option selected>Plano</option>
-                            <option value="1">Emergencial</option>
-                            <option value="2">VIP</option>
-                            <option value="3">Tradicional</option>
-                          </select>
+                        {{ form.produto(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
                         </div>
                       </div>
                     </div>
@@ -191,7 +185,7 @@
       var inputTelefone = document.createElement("input");
       inputTelefone.className = "entrada form-control text-center";
       inputTelefone.type = "text";
-      inputTelefone.name = "telefone" + telefoneCount;
+      inputTelefone.name = "telefone";
       inputTelefone.placeholder = "Digite o telefone";
       inputTelefone.required = true;
   

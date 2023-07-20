@@ -24,8 +24,15 @@ class Cliente(db.Model):
     nome = db.Column(db.String(60))
     nasc = db.Column(db.Date)
     email = db.Column(db.String(50))
-    cpf = db.Column(db.String(20), index=True)
-    rg = db.Column(db.String(20))
+    cpf = db.Column(db.String(20), index=True, unique=True)
+    rg = db.Column(db.String(20), unique=True)
+
+    def __repr__(self):
+        return f'Cliente: {self.nome[:10]}'
+
+
+class Endereco(db.Model):
+    id = db.Column(db.Integer, primary_key=True, index=True)
     cep = db.Column(db.String(8))
     uf = db.Column(db.String(2))
     cidade = db.Column(db.String)
@@ -33,8 +40,8 @@ class Cliente(db.Model):
     rua = db.Column(db.String)
     numero = db.Column(db.Integer)
 
-    def __repr__(self):
-        return f'Cliente: {self.nome[:10]}'
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
+    cliente = db.relationship('Cliente', backref='enderecos')
 
 
 class Telefone(db.Model):
@@ -56,17 +63,26 @@ class Produto(db.Model):
     custo = db.Column(db.Numeric(8, 2))
     ativo = db.Column(db.Boolean, default=False)
 
+    def __str__(self):
+        return str(self.nome)
+
 
 class Origem(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     nome = db.Column(db.String(30))
     ativo = db.Column(db.Boolean, default=False)
 
+    def __str__(self):
+        return str(self.nome)
+
 
 class Campanha(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     nome = db.Column(db.String(30))
     ativo = db.Column(db.Boolean, default=False)
+
+    def __str__(self):
+        return str(self.nome)
 
 
 class CanalDaVenda(db.Model):
