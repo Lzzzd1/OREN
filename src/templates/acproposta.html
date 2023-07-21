@@ -429,6 +429,7 @@
 <body>
   <!--  Body Wrapper -->
 {% include 'sidebar.html' %}
+  </div>
 
         <div class="container-fluid">
         <div class="row">
@@ -441,7 +442,7 @@
                       </div>     
                       <br>
                   {% for proposta in propostas %}
-                      <div class="alert alert-success" role="alert">{{proposta.cliente.cpf}} - {{proposta.cliente.nome}}
+                      <div class="alert alert-success" role="alert"><a href="{{ url_for('views.teste', id=proposta.cliente.id, cpf=proposta.cliente.cpf) }}">{{proposta.cliente.cpf}}</a> - {{proposta.cliente.nome}}
                           - {{ proposta.produto.nome }} - R${{proposta.total}}
                           <i class="ti ti-cloud-download"></i> </div>
                   {% endfor %}
