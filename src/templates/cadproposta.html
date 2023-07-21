@@ -14,8 +14,14 @@
       color: #fff;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+</script>
+  <script type="text/python" src="{{url_for('static', filename='scripts/vendas.py')}}">
+  </script>
+
 </head>
-<body>
+<body onload="brython()">
   <!--  Body Wrapper -->
   {% include 'sidebar.html' %}
   <!--  Sidebar End -->
@@ -132,6 +138,7 @@
                 <div class="proposta1" style="display: none;">
                   <div class="conteudo">
                     <h3 style="text-align: center;">Proposta</h3>
+                    <h3 style="text-align: center;" id="total">Total: R$0,00</h3>
                     <div id="error-messages"></div>
                     <br>
                     <div class="selecte">
@@ -151,7 +158,7 @@
                     <br>
                     <div style="text-align: center;">
                       <div class="form-group d-flex justify-content-center">
-                        <input class="entrada form-control text-center" type="text" id="valor-proposta" placeholder="Digite o Valor do contrato" required><br>
+                        <input class="entrada form-control text-center" type="text" id="desconto" placeholder="Desconto" required><br>
                       </div>
                     </div>
                     <br>

@@ -5,6 +5,7 @@ from src.auth import configure as auth_config
 from src.views import configure as views_config
 from src.models import configure as db_config
 from src.adm import configure as adm_config
+from src.api import configure as api_config
 from src.models import Users
 
 
@@ -28,7 +29,7 @@ def create_app():
         return Users.query.get(int(id_))
 
     adm_config(app)
-
+    api_config(app)
     auth_config(app)
     views_config(app)
 
