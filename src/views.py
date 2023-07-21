@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
 from src.forms import ClienteForm, PropostaForm, VendaMixinForm
-from src.models import Cliente, Venda
+from src.models import Cliente, Venda, Produto
 
 views = Blueprint('views', __name__)
 
@@ -24,14 +24,6 @@ def vender():
 def propostas():
     propostas = Venda.query.all()
     return render_template('acproposta.html', propostas=propostas)
-
-
-# @views.get('/pesquisar')
-# @login_required
-# def pesquisar():
-#     cpf = request.args.get('cpf')
-#     cliente = Cliente.query.filter_by(cpf=cpf).first()
-#     return cliente.
 
 
 @views.get('/teste')
