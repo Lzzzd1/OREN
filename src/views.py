@@ -26,10 +26,10 @@ def propostas():
     return render_template('acproposta.html', propostas=propostas)
 
 
-@views.get('/teste')
-def teste():
-    form = PropostaForm()
-    return render_template('testeform.html', form=form)
+@views.get('/cliente/<int:id>/<cpf>')
+def teste(id, cpf):
+    cliente = Cliente.query.get(id)
+    return render_template('cliente.html', cliente=cliente)
 
 
 def configure(app):
