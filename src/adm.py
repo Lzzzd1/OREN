@@ -16,8 +16,9 @@ admin = Admin(name='Administrador', template_mode='bootstrap3', index_view=MyAdm
 
 
 class MyView(ModelView):
-    column_display_all_relations = True
-    column_hide_backrefs = False
+    # column_display_all_relations = True
+    # column_hide_backrefs = False
+    ...
 
 
 class TelefoneView(ModelView):

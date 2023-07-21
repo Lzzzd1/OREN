@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, StringField, DateField, IntegerField, SelectField, FloatField
-from wtforms.validators import DataRequired, InputRequired, Length, EqualTo
+from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
 from wtforms_sqlalchemy.fields import QuerySelectField
-from src.models import Origem, Campanha, CanalDaVenda, Produto
+from src.models import Origem, Campanha, CanalDaVenda, Produto, Users
 
 from src.constants import UFS
 
@@ -14,15 +14,24 @@ class LoginForm(FlaskForm):
 
 
 class RegisForm(FlaskForm):
-    nome = StringField('Nome', validators=[InputRequired(),
+    nome = StringField('Nome', validators=[InputRequired('Faltou o nome!'),
                                            Length(min=1, max=25, message='Nome muito longo!')])
-    email = EmailField('Email', validators=[InputRequired(message='O usuário precisa logar!')])
+    email = EmailField('Email', validators=[InputRequired(message='O usuário precisa logar!'),
+                                            Email('Insira um email válido!')])
     senha = PasswordField('Senha', validators=[InputRequired('O usuário precisa de senha!'),
-                                               Length(min=8)])
-    confirmar_senha = PasswordField('Confirmar senha', validators=[InputRequired('O usuário precisa de senha!'),
-                                                                   EqualTo('senha', message='As senhas não batem!')])
+                                               Length(min=8, message='No mínimo 8 caracteres!')])
+    confirmar_senha = PasswordField('Confirmar senha', validators=[EqualTo('senha', message='As senhas não batem!')])
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(RegisForm, self).validate()
+        user = Users.query.filter_by(email=self.email.data).first()
+        if user:
+            self.email.errors.append("Email já registrado")
+            return False
+        if not initial_validation:
+            return False
 
+        return True
 class ClienteForm(FlaskForm):
     cpf = StringField('CPF', validators=[InputRequired(), Length(min=11, max=20, message='CPF Inválido')])
     rg = StringField('RG', validators=[InputRequired(), Length(min=7, max=20)])

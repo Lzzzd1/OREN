@@ -17,6 +17,7 @@ flask-admin = "^1.6.1"
 flask-debugtoolbar = "^0.13.1"
 dynaconf = "^3.1.12"
 wtforms-sqlalchemy = "^0.3"
+email-validator = "^2.0.0.post2"
 
 
 [build-system]

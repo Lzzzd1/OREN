@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash
 
 
 db = SQLAlchemy()
@@ -11,9 +12,14 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(150), nullable=False, unique=True)
     nome = db.Column(db.String(25), nullable=False)
     senha = db.Column(db.String, nullable=False)
-    hierarquia = db.Column(db.Integer, nullable=False)
+    hierarquia = db.Column(db.Integer, nullable=False, default=1)
 
     vendas = db.relationship('Venda', backref='user', lazy='dynamic')
+
+    def __init__(self, email, nome, senha):
+        self.email = email
+        self.nome = nome
+        self.senha = generate_password_hash(senha, method='sha512')
 
     def __repr__(self):
         return f'User {self.nome}'
