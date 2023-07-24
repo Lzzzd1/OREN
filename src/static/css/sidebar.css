@@ -295,7 +295,9 @@ background-color: #0056b3;
   .dark-mode p,
   .dark-mode a,
   .dark-mode h6,
+  .dark-mode h5,
   .dark-mode h3,
+  .dark-mode p,
   .dark-mode ::placeholder,
   .dark-mode label{
     color: #fff;
@@ -346,6 +348,12 @@ background-color: #0056b3;
   }
 
   
+ /* Estilos para modo dark */
+ body.dark-mode .text-muted{
+  color: white!important;
+  background-color: rgb(0, 0, 0);
+}
+
 
   body.dark-mode input[type="text"]::placeholder,
   body.dark-mode input[type="email"]::placeholder,
@@ -359,7 +367,7 @@ background-color: #0056b3;
   }
 
   .dark-mode .card-body {
-    color: #000000;
+    background-color: black;
   }
   
 
@@ -439,4 +447,16 @@ margin-top: 20px;
 
 #btnMostrarProposta {
 text-align: center;
+}
+
+.white-placeholder::placeholder {
+  color: white; /* Defina a cor desejada para o placeholder, neste caso, branco (white) */
+}
+.text-muted {
+  color: black; /* Escolha a cor desejada para o modo claro */
+}
+
+/* Estilo para o modo escuro */
+.dark-mode .text-muted {
+  color: white; /* Escolha a cor desejada para o modo escuro */
 }

@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+sys.path[0] = str(Path(sys.path[0]).parent)
+
+
 from src import create_app
 
 app = create_app()
