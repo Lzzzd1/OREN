@@ -1,7 +1,6 @@
-<!doctype html>
-<html lang="en">
+{% extends 'sidebar.html' %}
 
-<head>
+{% block header %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro</title>
@@ -19,247 +18,225 @@
 </script>
   <script type="text/python" src="{{url_for('static', filename='scripts/vendas.py')}}">
   </script>
-
-</head>
-<body onload="brython()">
-  <!--  Body Wrapper -->
-  {% include 'sidebar.html' %}
-  <!--  Sidebar End -->
-  <!--  Main wrapper -->
-  <div class="body-wrapper">
-    <!--  Header Start -->
-    <!--  Header End -->
-    <!--  Content Starts -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="card">
-            <div class="card-body">
-              <form id="formProposta" class="needs-validation" novalidate>
-                <div class="clientes">
-                  <h3 style="text-align: center;">Cliente</h3>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        {{ form.nome(class="entrada form-control text-center", placeholder=form.nome.label.text, required=True) }}
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        {{ form.cpf(class="entrada form-control text-center", placeholder=form.cpf.label.text, required=True) }}
-                        <span id="cpf-error" class="error-message"></span><br>
-                      </div>
+{% endblock %}
+{% block content %}
+            <form id="formProposta" class="needs-validation" novalidate>
+              <div class="clientes">
+                <h3 style="text-align: center;">Cliente</h3>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      {{ form.nome(class="entrada form-control text-center", placeholder=form.nome.label.text, required=True) }}
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      {{ form.email(class="entrada form-control text-center", placeholder=form.email.label.text, required=True) }}
-                        <br>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      {{ form.telefone(class="entrada form-control text-center", placeholder=form.telefone.label.text, oninput="validarTelefone()", required=True) }}
-                       <span id="telefone-error" class="error-message"></span>
-                        <br>
-                      </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      {{ form.cpf(class="entrada form-control text-center", placeholder=form.cpf.label.text, required=True) }}
+                      <span id="cpf-error" class="error-message"></span><br>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      {{ form.rg(class="entrada form-control text-center", placeholder=form.rg.label.text, required=True) }}
-                        <br>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      {{ form.nasc(class="entrada form-control text-center", placeholder=form.nasc.label.text, required=True) }}
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="telefones-adicionais"></div>
-                  <div id="divBotao" style="display: flex; justify-content: space-evenly" >
-                    <a class="btn btn-primary" onclick="adicionarTelefone()"><i class="ti ti-box-multiple"></i> Adicionar Mais Números</a>   
-                  </div>
-                  <div id="divBotao">
-                    <a class="btn btn-primary" id="btnMostrarEndereco" onclick="mostrarEndereco()">Próximo</a>
-                  </div>
-                  <br>
                 </div>
-                <div class="endereco" style="display: none;">
-                  <h3 style="text-align: center;">Endereço</h3>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" type="text" id="cep" maxlength="9" placeholder="CEP" autofocus required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" placeholder="UF" type="text" id="uf" required><br>
-                      </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    {{ form.email(class="entrada form-control text-center", placeholder=form.email.label.text, required=True) }}
+                      <br>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" placeholder="Cidade" type="text" id="cidade" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" placeholder="Bairro" type="text" id="bairro" required><br>
-                      </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    {{ form.telefone(class="entrada form-control text-center", placeholder=form.telefone.label.text, oninput="validarTelefone()", required=True) }}
+                      <span id="telefone-error" class="error-message"></span>
+                      <br>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" placeholder="Numero da casa" type="text" id="casa" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input class="entrada form-control text-center" placeholder="Endereço" type="text" id="endereco" required><br>
-                      </div>
-                    </div>
-                    <div id="divBotao" style="display: flex; justify-content: space-evenly">
-                      <a class="btn btn-primary" id="btnVoltarCliente" onclick="voltarCliente()">Voltar</a><br>
-                      <a class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Próximo</a>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    {{ form.rg(class="entrada form-control text-center", placeholder=form.rg.label.text, required=True) }}
+                      <br>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    {{ form.nasc(class="entrada form-control text-center", placeholder=form.nasc.label.text, required=True) }}
+                      <br>
+                    </div>
+                  </div>
+                </div>
+                <div id="telefones-adicionais"></div>
+                <div id="divBotao" style="display: flex; justify-content: space-evenly" >
+                  <a class="btn btn-primary" onclick="adicionarTelefone()"><i class="ti ti-box-multiple"></i> Adicionar Mais Números</a>   
+                </div>
+                <div id="divBotao">
+                  <a class="btn btn-primary" id="btnMostrarEndereco" onclick="mostrarEndereco()">Próximo</a>
                 </div>
                 <br>
-                <div class="proposta1" style="display: none;">
-                  <div class="conteudo">
-                    <h3 style="text-align: center;">Proposta</h3>
-                    <h3 style="text-align: center;" id="total">Total: R$0,00</h3>
-                    <div id="error-messages"></div>
-                    <br>
-                    <div class="selecte">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                      {{ form.campanha(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
-                        </div>
-                      </div><br>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                        {{ form.produto(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
-                        </div>
-                      </div>
+              </div>
+              <div class="endereco" style="display: none;">
+                <h3 style="text-align: center;">Endereço</h3>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" type="text" id="cep" maxlength="9" placeholder="CEP" autofocus required>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div style="text-align: center;">
-                      <div class="form-group d-flex justify-content-center">
-                        <input class="entrada form-control text-center" type="text" id="desconto" placeholder="Desconto" required><br>
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="" style="text-align: center;">
-                      <div id="divBotao" style="display: flex; justify-content: space-evenly">
-                        <a class="btn btn-primary" id="btnVoltarEndereco" onclick="voltarEndereco()">Voltar</a>
-                        <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
-                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" placeholder="UF" type="text" id="uf" required><br>
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--  Content Ends -->
-  </div>
-  <!--  End Main wrapper -->
-  <script>
-    var telefoneCount = 1;
-  
-    function adicionarTelefone() {
-      var telefonesAdicionais = document.getElementById("telefones-adicionais");
-  
-      var divTelefone = document.createElement("div");
-      divTelefone.className = "form-group";
-      var inputTelefone = document.createElement("input");
-      inputTelefone.className = "entrada form-control text-center";
-      inputTelefone.type = "text";
-      inputTelefone.name = "telefone";
-      inputTelefone.placeholder = "Digite o telefone";
-      inputTelefone.required = true;
-  
-      divTelefone.appendChild(inputTelefone);
-      telefonesAdicionais.appendChild(divTelefone);
-  
-      telefoneCount++;
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" placeholder="Cidade" type="text" id="cidade" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" placeholder="Bairro" type="text" id="bairro" required><br>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" placeholder="Numero da casa" type="text" id="casa" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="entrada form-control text-center" placeholder="Endereço" type="text" id="endereco" required><br>
+                    </div>
+                  </div>
+                  <div id="divBotao" style="display: flex; justify-content: space-evenly">
+                    <a class="btn btn-primary" id="btnVoltarCliente" onclick="voltarCliente()">Voltar</a><br>
+                    <a class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Próximo</a>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="proposta1" style="display: none;">
+                <div class="conteudo">
+                  <h3 style="text-align: center;">Proposta</h3>
+                  <h3 style="text-align: center;" id="total">Total: R$0,00</h3>
+                  <div id="error-messages"></div>
+                  <br>
+                  <div class="selecte">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                    {{ form.campanha(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
+                      </div>
+                    </div><br>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      {{ form.produto(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div style="text-align: center;">
+                    <div class="form-group d-flex justify-content-center">
+                      <input class="entrada form-control text-center" type="text" id="desconto" placeholder="Desconto" required><br>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="" style="text-align: center;">
+                    <div id="divBotao" style="display: flex; justify-content: space-evenly">
+                      <a class="btn btn-primary" id="btnVoltarEndereco" onclick="voltarEndereco()">Voltar</a>
+                      <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+<script>
+  var telefoneCount = 1;
+
+  function adicionarTelefone() {
+    var telefonesAdicionais = document.getElementById("telefones-adicionais");
+
+    var divTelefone = document.createElement("div");
+    divTelefone.className = "form-group";
+    var inputTelefone = document.createElement("input");
+    inputTelefone.className = "entrada form-control text-center";
+    inputTelefone.type = "text";
+    inputTelefone.name = "telefone";
+    inputTelefone.placeholder = "Digite o telefone";
+    inputTelefone.required = true;
+
+    divTelefone.appendChild(inputTelefone);
+    telefonesAdicionais.appendChild(divTelefone);
+
+    telefoneCount++;
+  }
+</script>
+<script>
+function mostrarEndereco() {
+    const divClientes = document.querySelector('.clientes');
+    const divEndereco = document.querySelector('.endereco');
+
+    divClientes.style.display = 'none';
+    divEndereco.style.display = 'block';
+  }
+
+  function mostrarProposta() {
+    const divEndereco = document.querySelector('.endereco');
+    const divProposta = document.querySelector('.proposta1');
+
+    divEndereco.style.display = 'none';
+    divProposta.style.display = 'block';
+  }
+
+  function voltarCliente() {
+    const divClientes = document.querySelector('.clientes');
+    const divEndereco = document.querySelector('.endereco');
+
+    divClientes.style.display = 'block';
+    divEndereco.style.display = 'none';
+  }
+
+  function voltarEndereco() {
+    const divProposta = document.querySelector('.proposta1');
+    const divEndereco = document.querySelector('.endereco');
+
+    divProposta.style.display = 'none';
+    divEndereco.style.display = 'block';
+  }
+</script>
+<script>
+  // Função para validar o número de telefone
+  function validarTelefone() {
+    var telefoneInput = document.getElementById("telefone");
+    var telefone = telefoneInput.value;
+
+    // Expressão regular para validar o número de telefone
+    var regexTelefone = /^\(\d{2}\)\s\d{4,5}\-\d{4}$/;
+
+    if (!regexTelefone.test(telefone)) {
+      // Exibe a mensagem de erro
+      document.getElementById("telefone-error").textContent = "Número de telefone inválido";
+      telefoneInput.setCustomValidity("Número de telefone inválido");
+    } else {
+      // Remove a mensagem de erro
+      document.getElementById("telefone-error").textContent = "";
+      telefoneInput.setCustomValidity("");
     }
-  </script>
-  <script>
- function mostrarEndereco() {
-      const divClientes = document.querySelector('.clientes');
-      const divEndereco = document.querySelector('.endereco');
+  }
 
-      divClientes.style.display = 'none';
-      divEndereco.style.display = 'block';
-    }
-
-    function mostrarProposta() {
-      const divEndereco = document.querySelector('.endereco');
-      const divProposta = document.querySelector('.proposta1');
-
-      divEndereco.style.display = 'none';
-      divProposta.style.display = 'block';
-    }
-
-    function voltarCliente() {
-      const divClientes = document.querySelector('.clientes');
-      const divEndereco = document.querySelector('.endereco');
-
-      divClientes.style.display = 'block';
-      divEndereco.style.display = 'none';
-    }
-
-    function voltarEndereco() {
-      const divProposta = document.querySelector('.proposta1');
-      const divEndereco = document.querySelector('.endereco');
-
-      divProposta.style.display = 'none';
-      divEndereco.style.display = 'block';
-    }
-  </script>
-  <script>
-    // Função para validar o número de telefone
-    function validarTelefone() {
-      var telefoneInput = document.getElementById("telefone");
-      var telefone = telefoneInput.value;
-  
-      // Expressão regular para validar o número de telefone
-      var regexTelefone = /^\(\d{2}\)\s\d{4,5}\-\d{4}$/;
-  
-      if (!regexTelefone.test(telefone)) {
-        // Exibe a mensagem de erro
-        document.getElementById("telefone-error").textContent = "Número de telefone inválido";
-        telefoneInput.setCustomValidity("Número de telefone inválido");
-      } else {
-        // Remove a mensagem de erro
-        document.getElementById("telefone-error").textContent = "";
-        telefoneInput.setCustomValidity("");
-      }
-    }
-  
-    // Evento de envio do formulário
-    var form = document.getElementById("formulario");
-    form.addEventListener("submit", function(event) {
-      // Valida o número de telefone antes de enviar o formulário
-      validarTelefone();
+  // Evento de envio do formulário
+  var form = document.getElementById("formulario");
+  form.addEventListener("submit", function(event) {
+    // Valida o número de telefone antes de enviar o formulário
+    validarTelefone();
   
       if (!form.checkValidity()) {
         event.preventDefault(); // Impede o envio do formulário se houver campos inválidos
@@ -532,6 +509,4 @@
     selectElement.addEventListener("click", toggleDarkMode);
 </script>
 <script src="{{url_for('static', filename='/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-</body>
-
-</html>
+{% endblock %}

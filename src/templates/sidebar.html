@@ -1,9 +1,18 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
 <link rel="stylesheet" href= "{{ url_for('static', filename='/css/styles.min.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/sidebar.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='/libs/simplebar/dist/simplebar.css') }}">
 <script src="{{url_for('static', filename='libs/simplebar/dist/simplebar.js')}}"></script>
+{%block header%}
+{% endblock %}
+</head>
 
+<body onload="brython()">
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -41,6 +50,15 @@
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu" style="color: #fff;">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <button class="sidebar-link" href="#" aria-expanded="false" style="background-color: transparent; border-color: transparent; color: white; ">
+                <span class="ti ti-search"></span>
+                <span class="hide-menu" >Pesquise</span>
+              </button>
+              <div id="searchInputContainer" style="display: none;">
+                <input  style="background-color: transparent; border-color: transparent; color: white; " type="text" id="searchInput" class="white-placeholder" placeholder="Digite sua pesquisa...">
+              </div>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{url_for('views.index')}}" aria-expanded="false" style="background-color: transparent">
@@ -117,5 +135,51 @@
       </div>
       <!-- End Sidebar scroll-->
     </aside>
+
+
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <!--  Header End -->
+      <!--  Content Starts -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card">
+              <div class="card-body">
+                {% block content %}
+                {% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
     <script src="{{ url_for('static', filename='js/app.min.js') }}" ></script>
 
+
+    <script type="text/javascript">
+const searchIcon = document.querySelector('.ti-search');
+const searchInputContainer = document.getElementById('searchInputContainer');
+const searchInput = document.getElementById('searchInput');
+
+// Adiciona um ouvinte de evento ao ícone da lupa para alternar entre a exibição da lupa e do campo de entrada
+searchIcon.addEventListener('click', function() {
+  searchIcon.style.display = 'none';
+  searchInputContainer.style.display = 'block';
+  searchInput.focus();
+});
+
+// Adiciona um ouvinte de evento ao documento inteiro para verificar cliques fora do campo de entrada
+document.addEventListener('click', function(event) {
+  // Verifica se o clique ocorreu fora do campo de entrada e do ícone da lupa
+  if (event.target !== searchInput && event.target !== searchIcon) {
+    searchIcon.style.display = 'block';
+    searchInputContainer.style.display = 'none';
+  }
+});
+    
+    </script>
+    </body>
+</html>

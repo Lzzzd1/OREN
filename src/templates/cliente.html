@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'sidebar.html' %}
+{% block header %}
+<meta charset="UTF-8">
     <title>Cliente</title>
   <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
 
-</head>
-<body>
-{% include 'sidebar.html' %}
-
-    <div class="body-wrapper">
-      <!--  Header Start -->
-      <header class="app-header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                <i class="ti ti-menu-2"></i>
-              </a>
-            </li>
-          </ul>
-          <div class="container-fluid">
-                <div class="centered">
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="centered">
 <section style="background-color: transparent;">
   <div class="container py-5">
     <div class="row">
@@ -32,7 +18,7 @@
               class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{ cliente.nome }}</h5>
             <p class="text-muted mb-1">CPF: {{ cliente.cpf }}</p>
-            <p class="text-muted mb-4">RG: {{ cliente.rg }}</p>
+            <p class="text-muted mb-4 {{ darkModeClass }} ">RG: {{ cliente.rg }}</p>
             <div class="d-flex justify-content-center mb-2">
               <button type="button" class="btn btn-primary">Follow</button>
               <button type="button" class="btn btn-outline-primary ms-1">Message</button>
@@ -104,13 +90,4 @@
 </section>
                 </div>
           </div>
-        </nav>
-      </header>
-    </div>
-  </div>
-
-
-
-
-</body>
-</html>
+{% endblock %}
