@@ -22,133 +22,53 @@
                 <h3 style="text-align: center;">Cliente</h3>
                 <br>
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      {{ form.nome(class="entrada form-control text-center", placeholder=form.nome.label.text, required=True) }}
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+                  <div class="col-md-20">
                     <div class="form-group">
                       {{ form.cpf(class="entrada form-control text-center", placeholder=form.cpf.label.text, required=True) }}
                       <span id="cpf-error" class="error-message"></span><br>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    {{ form.email(class="entrada form-control text-center", placeholder=form.email.label.text, required=True) }}
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    {{ form.telefone(class="entrada form-control text-center", placeholder=form.telefone.label.text, oninput="validarTelefone()", required=True) }}
-                      <span id="telefone-error" class="error-message"></span>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    {{ form.rg(class="entrada form-control text-center", placeholder=form.rg.label.text, required=True) }}
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    {{ form.nasc(class="entrada form-control text-center", placeholder=form.nasc.label.text, required=True) }}
-                      <br>
-                    </div>
-                  </div>
-                </div>
-                <div id="telefones-adicionais"></div>
-                <div id="divBotao" style="display: flex; justify-content: space-evenly" >
-                  <a class="btn btn-primary" onclick="adicionarTelefone()"><i class="ti ti-box-multiple"></i> Adicionar Mais Números</a>   
-                </div>
-                <div id="divBotao">
-                  <a class="btn btn-primary" id="btnMostrarEndereco" onclick="mostrarEndereco()">Próximo</a>
-                </div>
-                <br>
-              </div>
-              <div class="endereco" style="display: none;">
-                <h3 style="text-align: center;">Endereço</h3>
-                <br>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" type="text" id="cep" maxlength="9" placeholder="CEP" autofocus required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" placeholder="UF" type="text" id="uf" required><br>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" placeholder="Cidade" type="text" id="cidade" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" placeholder="Bairro" type="text" id="bairro" required><br>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" placeholder="Numero da casa" type="text" id="casa" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input class="entrada form-control text-center" placeholder="Endereço" type="text" id="endereco" required><br>
-                    </div>
-                  </div>
-                  <div id="divBotao" style="display: flex; justify-content: space-evenly">
-                    <a class="btn btn-primary" id="btnVoltarCliente" onclick="voltarCliente()">Voltar</a><br>
-                    <a class="btn btn-primary" id="btnMostrarProposta" onclick="mostrarProposta()">Próximo</a>
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="proposta1" style="display: none;">
-                <div class="conteudo">
-                  <h3 style="text-align: center;">Proposta</h3>
-                  <h3 style="text-align: center;" id="total">Total: R$0,00</h3>
-                  <div id="error-messages"></div>
+                  <h3 style="text-align: center;">Contrato</h3>
                   <br>
-                  <div class="selecte">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                    {{ form.campanha(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
+                  <br>
+                  <div class="col-md-6">
+                    <div class="form-group checkboxes-container" required>
+                      <div>
+                        <input type="checkbox" id="FIP" name="FIP">
+                        <label for="FIP">FIP</label>
                       </div>
-                    </div><br>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      {{ form.produto(class="entrada form-control text-center select-campanha", style="width: 90%;", required=True) }}
+                      <div>
+                        <input type="checkbox" id="FIM" name="FIM">
+                        <label for="FIM">FIM</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="FIS" name="FIS">
+                        <label for="FIS">FIS</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="FIE" name="FIE">
+                        <label for="FIE">FIE</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="FIV" name="FIV">
+                        <label for="FIV">FIV</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="PAM" name="PAM">
+                        <label for="PAM">PAM</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="PAE" name="PAE">
+                        <label for="PAE">PAE</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="PIEDU" name="PIEDU">
+                        <label for="PIEDU">PIEDU</label>
                       </div>
                     </div>
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div style="text-align: center;">
-                    <div class="form-group d-flex justify-content-center">
-                      <input class="entrada form-control text-center" type="text" id="desconto" placeholder="Desconto" required><br>
-                    </div>
-                  </div>
-                  <br>
-                  <br>
-                  <br>
+                  </div>                  
                   <div class="" style="text-align: center;">
                     <div id="divBotao" style="display: flex; justify-content: space-evenly">
-                      <a class="btn btn-primary" id="btnVoltarEndereco" onclick="voltarEndereco()">Voltar</a>
                       <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
                     </div>
                   </div>
