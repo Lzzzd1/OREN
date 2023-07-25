@@ -21,6 +21,7 @@
     const logoDark = document.getElementById('logo-dark');
 
     darkModeToggle.addEventListener('click', () => {
+      localStorage.setItem('theme', 'dark');
       const body = document.body;
       body.classList.toggle('dark-mode');
       if (body.classList.contains('dark-mode')) {
@@ -28,6 +29,7 @@
         logoLight.style.display = 'none';
         logoDark.style.display = 'block';
       } else {
+      localStorage.setItem('theme', 'light');
         darkModeToggle.textContent = 'Ativar Dark Mode';
         logoLight.style.display = 'block';
         logoDark.style.display = 'none';

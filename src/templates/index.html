@@ -10,6 +10,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-xl-12">
+                {% include '_flash_alerts.html' %}
                 <div class="centered">
                   <h1>Bem vindo, {{ current_user.nome.split()[0] }}</h1>
                 </div>

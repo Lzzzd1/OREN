@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
-from src.forms import ClienteForm, PropostaForm, VendaMixinForm
-from src.models import Cliente, Venda, Produto
+from src.forms import VendaMixinForm
+from src.models import Cliente, Venda
 
 views = Blueprint('views', __name__)
 
@@ -26,9 +26,19 @@ def propostas():
     return render_template('acproposta.html', propostas=propostas)
 
 
-@views.get('/cliente/<int:id>/<cpf>')
-def teste(id, cpf):
-    cliente = Cliente.query.get(id)
+@views.get('/cliente/<cpf>')
+def pesquisar(cpf):
+    cliente = Cliente.query.filter_by(cpf=cpf).first()
+    return render_template('cliente.html', cliente=cliente)
+
+
+@views.post('/cliente/')
+def pesquisar_post():
+    dado = request.form.get('cpf').replace('.', '').replace('-', '').replace('(', '').replace(')', '')
+    cliente = Cliente.query.filter((Cliente.cpf == dado)).first()
+    if not cliente:
+        flash('Não encontrado', 'danger')
+        return redirect(url_for('.index'))
     return render_template('cliente.html', cliente=cliente)
 
 
