@@ -354,6 +354,16 @@ background-color: #0056b3;
   background-color: rgb(0, 0, 0);
 }
 
+.checkboxes-container {
+  display: flex;
+  flex-direction: center;
+
+}
+
+.checkboxes-container div {
+  margin-right: 20%; /* Optional: Adds some spacing between checkboxes and labels */
+}
+
 
   body.dark-mode input[type="text"]::placeholder,
   body.dark-mode input[type="email"]::placeholder,
