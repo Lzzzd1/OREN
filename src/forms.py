@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, StringField, DateField, IntegerField, SelectField, FloatField
 from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
 from wtforms_sqlalchemy.fields import QuerySelectField
-from src.models import Origem, Campanha, CanalDaVenda, Produto, Users
+from src.models import Origem, Campanha, Produto, Users
 
 from src.constants import UFS
 

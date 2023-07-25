@@ -14,7 +14,7 @@ class Users(db.Model, UserMixin):
     senha = db.Column(db.String, nullable=False)
     hierarquia = db.Column(db.Integer, nullable=False, default=1)
 
-    vendas = db.relationship('Venda', backref='user', lazy='dynamic')
+    cadastros = db.relationship('Venda', backref='user', lazy='dynamic')
 
     def __init__(self, email, nome, senha):
         self.email = email
@@ -26,7 +26,7 @@ class Users(db.Model, UserMixin):
 
 
 class Cliente(db.Model):
-    id = db.Column(db.Integer, primary_key=True, index=True)
+    id = db.Column(db.Integer, primary_key=True, index=True, autoincrement=True)
     nome = db.Column(db.String(60))
     nasc = db.Column(db.Date)
     email = db.Column(db.String(50))
@@ -34,7 +34,7 @@ class Cliente(db.Model):
     rg = db.Column(db.String(20), unique=True)
 
     def __repr__(self):
-        return f'Cliente: {self.nome[:10]}'
+        return f'Cliente: {self.cpf}'
 
 
 class Endereco(db.Model):
@@ -136,6 +136,17 @@ class Venda(db.Model):
     campanha = db.relationship('Campanha', backref='vendas')
     canal = db.relationship('CanalDaVenda', backref='vendas')
     pagamentos = db.relationship('Pagamento', backref='venda', lazy='dynamic')
+
+
+class Links(db.Model):
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    criada = db.Column(db.DateTime(timezone=False), default=db.func.now())
+    link = db.Column(db.String)
+    acessos = db.Column(db.Integer)
+
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
+
+    cliente = db.relationship('Cliente', backref=db.backref('links', lazy='dynamic'))
 
 
 def configure(app):
