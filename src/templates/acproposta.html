@@ -5,23 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vendas total</title>
   <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
-  <link rel="stylesheet" href= "{{ url_for('static', filename='/css/styles.min.css') }}" />
-  <script type="text/python" src="{{url_for('static', filename='scripts/propostas_js.py')}}">
-  </script>
+  <link rel="stylesheet" href= "{{ url_for('static', filename='/css//styles.min.css') }}" />
 {% endblock %}
 {% block content %}
   <!--  Body Wrapper -->
             <h1 class="text-center">PROPOSTAS </h1>     
             <br>
             {% for proposta in propostas %}
-            <div class="alert alert-success" role="alert"><a href="{{ url_for('views.pesquisar', cpf=proposta.cliente.cpf) }}">{{proposta.cliente.cpf}}</a> - {{proposta.cliente.nome}}
+            <div class="alert alert-success" role="alert"><a href="{{ url_for('views.teste', id=proposta.cliente.id, cpf=proposta.cliente.cpf) }}">{{proposta.cliente.cpf}}</a> - {{proposta.cliente.nome}}
                 - {{ proposta.produto.nome }} - R${{proposta.total}}
-                <i class="ti ti-cloud-download"></i>
-            <i class="ti ti-arrow-down" style="float: right; font-size: 125%;"></i>
-                <div class="pagamentos" style="display: none;">
-                    batata
-                </div>
-            </div>
+                <i class="ti ti-cloud-download"></i> </div>
              {% endfor %}
             <div class="alert alert-danger" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div>
             <div class="alert alert-success" role="alert"> { Plataforma } {N* de matricula } {CPF}  {nome} <i class="ti ti-cloud-download"></i> </div> 
