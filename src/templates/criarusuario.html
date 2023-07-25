@@ -10,13 +10,32 @@
 </head>
 <body>
   <!--  Body Wrapper -->
-{% include 'sidebar.html' %}    
-<!--  Main wrapper -->
+{% include 'sidebar.html' %}    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
       <!--  Header End -->
       <!--  Content Starts -->
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+      data-sidebar-position="fixed" data-header-position="fixed">
+      <div
+        class="position-relative overflow-hidden min-vh-100 d-flex align-items-center justify-content-center">
         <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="row justify-content-center w-100">
             <div class="col-md-8 col-lg-6 col-xxl-3">
               <div class="card mb-0" style="display: flex;">
+                <div class="card-body">
+                  {% include '_flash_alerts.html' %}
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img type="img" src="{{ url_for('static', filename='/images/logos/logohd.png') }}" style="width: 60%;">
                 </a>
@@ -40,12 +59,14 @@
                     {{ render_error(form.senha) }}
 
                   </div>
+
                   <div class="mb-4">
                     {{ form.confirmar_senha.label(class='form-label') }}
                     {{ form.confirmar_senha(class='form-control', required=False) }}
                     {{ render_error(form.confirmar_senha) }}
 
                   </div>
+
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Criar</button>
                 </form>
               </div>
