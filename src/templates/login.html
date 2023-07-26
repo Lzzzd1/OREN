@@ -13,13 +13,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
 </script>
-  <style>
-    .body
-  {
-  background-image: url('../assets/images/backgrounds/bg-luiz.png'); /* Substitua o caminho da imagem pela desejada */
-  background-size: cover; /* Ajusta o tamanho da imagem ao fundo */
-  }
-  </style>
 </head>
 
 <body onload="brython()">
@@ -35,8 +28,7 @@
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
-                  <img src= "{{ url_for('static', filename='images/logos/logohd_-_Copia_ZUADO_1-removebg.png') }}"
-                       style="width:50%;" id="logo-dark" />
+                  <img src= "{{ url_for('static', filename='images/logos/base360.png') }}"style="width: 40%; margin: auto; display: block;">
                 <p class="text-center">Que seu dia seja abençoado</p>
                     {% include '_flash_alerts.html' %}
                 <form action="{{ url_for('auth.login_post') }}" method="POST">

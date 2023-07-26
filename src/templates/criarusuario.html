@@ -1,43 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'sidebar.html' %}
+{% block header %}  
   <title>Cadastro</title>
   <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='/images/logos/ico.ico') }}" />
   <link rel="stylesheet" href= "{{ url_for('static', filename='/css//styles.min.css') }}" />
   <link rel="style" href= "{{ url_for('static', filename='/css/styles.min.css') }}" >
-</head>
-<body>
+{% endblock %}
   <!--  Body Wrapper -->
-{% include 'sidebar.html' %}    <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
-      <header class="app-header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                <i class="ti ti-menu-2"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <!--  Header End -->
       <!--  Content Starts -->
-      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-      data-sidebar-position="fixed" data-header-position="fixed">
-      <div
-        class="position-relative overflow-hidden min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="d-flex align-items-center justify-content-center w-100">
+      {% block content %}
           <div class="row justify-content-center w-100">
             <div class="col-md-8 col-lg-6 col-xxl-3">
               <div class="card mb-0" style="display: flex;">
                 <div class="card-body">
                   {% include '_flash_alerts.html' %}
-                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img type="img" src="{{ url_for('static', filename='/images/logos/logohd.png') }}" style="width: 60%;">
+                  <img type="img" src="{{ url_for('static', filename='/images/logos/base360.png') }}" style="width: 60%; margin: auto; display: block;">
                 </a>
                 <p class="text-center">Abençoado seja o usuário</p>
                   {% from "_form_errors.html" import render_error %}
@@ -75,10 +52,6 @@
         </div>
       </div>
     </div>
-      
-      <!--  Content Ends -->
-    </div>
-    <!--  End Main wrapper -->
   </div>
   <!--  End Body Wrapper -->
   <script src= "{{ url_for('static', filename='libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}" ></script>
@@ -107,5 +80,4 @@
         })
     })()
   </script>
-</body>
-</html>
+{% endblock %}

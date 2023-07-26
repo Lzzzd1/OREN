@@ -247,9 +247,11 @@ background-color: #0056b3;
     color: #fff;
   }
 
+  /* cor da barra lateral */
+    
   .left-sidebar {
     transition: background-color 0.5s ease;
-    background: linear-gradient(to bottom, #089bfe, #089ff4, #0c2d74, #0b0b18);
+    background: linear-gradient(to bottom, black, black, #ffa500, #ffa500);
   }
   .left-sidebar.sidebar-degrade {
     background: linear-gradient(to bottom, #000, #000);
@@ -355,7 +357,7 @@ background-color: #0056b3;
 }
 .checkboxes-container {
   display: flex;
-  justify-content: row;
+  justify-content: center;
 }
 
 .checkboxes-container div {
