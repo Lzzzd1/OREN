@@ -216,6 +216,21 @@ itsdangerous = "*"
 werkzeug = "*"
 
 [[package]]
+name = "flask-htmx"
+version = "0.3.1"
+description = "A Flask extension to work with HTMX."
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "flask_htmx-0.3.1-py3-none-any.whl", hash = "sha256:906c4a40814efcbb48667ab9a8759bd2b65d630ce1aab6d717fc0414210f1291"},
+    {file = "flask_htmx-0.3.1.tar.gz", hash = "sha256:929684c83d0099f070350f500ad3030155eac9423d8d52e8c27766ada372eaf8"},
+]
+
+[package.dependencies]
+Flask = ">=2.0.2,<3.0.0"
+
+[[package]]
 name = "flask-login"
 version = "0.6.2"
 description = "User authentication and session management for Flask."
@@ -687,4 +702,4 @@ WTForms = ">=1.0.5"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c257966cf5c43423e9a016f6e81fb350516b481673459b3f39e6e5b54d376292"
+content-hash = "b0cb63deb0052f7eb0a37c0d53d2cbf9fa5274353a0afd2f91c5b3827258898e"

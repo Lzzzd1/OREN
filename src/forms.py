@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField, BooleanField, StringField, DateField, IntegerField, SelectField, FloatField
+from wtforms import EmailField, PasswordField, BooleanField, StringField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
 from wtforms_sqlalchemy.fields import QuerySelectField
-from src.models import Origem, Campanha, Produto, Users
+from src.models import Origem, Campanha, Produto, Users, Cliente
 
 from src.constants import UFS
 
@@ -50,18 +50,27 @@ class EnderecoForm(FlaskForm):
     numero = IntegerField('Número', validators=[InputRequired()])
 
 
-class PropostaForm(FlaskForm):
-    telefone_venda = SelectField('Telefone do contato', choices=[(f'telefone{x}', f'telefone{x}') for x in range(3)])
-    produto = QuerySelectField(query_factory=lambda: Produto.query.filter_by(ativo=True), allow_blank=True, blank_text='Plano')
-    desconto = FloatField('Desconto')
-    # total = FloatField('Total')
-    origem = QuerySelectField(query_factory=lambda: Origem.query.filter_by(ativo=True), allow_blank=True,
-                              blank_text='Origem')
-    campanha = QuerySelectField(query_factory=lambda: Campanha.query.filter_by(ativo=True), allow_blank=True,
-                                blank_text='Campanha')
-    canal = QuerySelectField(query_factory=lambda: CanalDaVenda.query.filter_by(ativo=True), allow_blank=True,
-                             blank_text='Canal da Venda')
+class LinkFormBase(FlaskForm):
+    cpf = StringField('CPF', validators=[InputRequired('Preencha o CPF')])
+
+    # def validate(self, extra_validators=None):
+    #     initial_validation = super(LinkFormBase, self).validate()
+    #     cliente = Cliente.query.filter_by(cpf=self.cpf.data).first()
+    #     if cliente:
+    #         self.cpf.errors.append("Esse usuário já possui link!")
+    #         return False
+    #     if not initial_validation:
+    #         return False
+    #
+    #     return True
 
 
-class VendaMixinForm(ClienteForm, EnderecoForm, PropostaForm):
-    ...
+def link_form_builder(servicos):
+    class LinkForm(LinkFormBase):
+        pass
+    for i, servico in enumerate(servicos):
+        setattr(LinkForm, f'{servico}', BooleanField(label=str(servico).upper()))
+    return LinkForm()
+
+# class VendaMixinForm(ClienteForm, EnderecoForm, PropostaForm):
+#     ...

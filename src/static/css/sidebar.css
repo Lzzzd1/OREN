@@ -33,7 +33,7 @@
 
   .left-sidebar {
     transition: background-color 0.5s ease;
-    background: linear-gradient(to bottom, #089bfe, #089ff4, #0c2d74, #0b0b18);
+    background: linear-gradient(to bottom, #FF8C00, #FF8C00, #FF8C00, #FF8C00);
   }
   .left-sidebar.sidebar-degrade {
     background: linear-gradient(to bottom, #000, #000);

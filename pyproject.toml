@@ -19,6 +19,7 @@ dynaconf = "^3.1.12"
 wtforms-sqlalchemy = "^0.3"
 email-validator = "^2.0.0.post2"
 hashids = "^1.3.1"
+flask-htmx = "^0.3.1"
 
 
 [build-system]
