@@ -3,7 +3,6 @@ from flask_migrate import Migrate
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash
 
-
 db = SQLAlchemy()
 
 
@@ -13,8 +12,6 @@ class Users(db.Model, UserMixin):
     nome = db.Column(db.String(25), nullable=False)
     senha = db.Column(db.String, nullable=False)
     hierarquia = db.Column(db.Integer, nullable=False, default=1)
-
-    cadastros = db.relationship('Venda', backref='user', lazy='dynamic')
 
     def __init__(self, email, nome, senha):
         self.email = email
@@ -56,21 +53,9 @@ class Telefone(db.Model):
     cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
 
     cliente = db.relationship('Cliente', backref='telefones')
-    vendas = db.relationship('Venda', backref='telefone')
 
     def __repr__(self):
         return f'Telefone: {self.telefone}'
-
-
-class Produto(db.Model):
-    id = db.Column(db.Integer, primary_key=True, index=True)
-    nome = db.Column(db.String(50))
-    valor = db.Column(db.Numeric(8, 2))
-    custo = db.Column(db.Numeric(8, 2))
-    ativo = db.Column(db.Boolean, default=False)
-
-    def __str__(self):
-        return str(self.nome)
 
 
 class Origem(db.Model):
@@ -112,30 +97,22 @@ class Pagamento(db.Model):
     data_validade = db.Column(db.Date, index=True)
     valor = db.Column(db.Numeric(8, 2))
 
-    venda_id = db.Column(db.Integer, db.ForeignKey('venda.id'), nullable=False)
     formapagamento_id = db.Column(db.Integer, db.ForeignKey(FormaPagamento.id), nullable=False)
 
 
-class Venda(db.Model):
+class Propostas(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
-    desconto = db.Column(db.Numeric(8, 2))
-    total = db.Column(db.Numeric(8, 2))
-    data = db.Column(db.DateTime(timezone=False), default=db.func.now())
+    nome = db.Column(db.String(50))
+    ativo = db.Column(db.Boolean, default=False)
 
-    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
-    telefone_id = db.Column(db.Integer, db.ForeignKey('telefone.id'), nullable=False)
-    produto_id = db.Column(db.Integer, db.ForeignKey('produto.id'), nullable=False)
-    origem_id = db.Column(db.Integer, db.ForeignKey('origem.id'), nullable=False)
-    campanha_id = db.Column(db.Integer, db.ForeignKey('campanha.id'), nullable=False)
-    canaldavenda_id = db.Column(db.Integer, db.ForeignKey(CanalDaVenda.id), nullable=False)
-    vendedor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    def __str__(self):
+        return str(self.nome)
 
-    cliente = db.relationship('Cliente', backref='vendas')
-    produto = db.relationship('Produto', backref='vendas')
-    origem = db.relationship('Origem', backref='vendas')
-    campanha = db.relationship('Campanha', backref='vendas')
-    canal = db.relationship('CanalDaVenda', backref='vendas')
-    pagamentos = db.relationship('Pagamento', backref='venda', lazy='dynamic')
+
+links_e_props = db.Table('links_e_props',
+                         db.Column('link_id', db.Integer, db.ForeignKey('links.id')),
+                         db.Column('proposta_id', db.Integer, db.ForeignKey('propostas.id'))
+                         )
 
 
 class Links(db.Model):
@@ -147,6 +124,7 @@ class Links(db.Model):
     cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
 
     cliente = db.relationship('Cliente', backref=db.backref('links', lazy='dynamic'))
+    propostas = db.relationship('Propostas', secondary=links_e_props, backref='links')
 
 
 def configure(app):

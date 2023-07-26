@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
 from src.forms import link_form_builder
-from src.models import Cliente, Venda
+from src.models import Cliente
 
 views = Blueprint('views', __name__)
 
@@ -21,11 +21,11 @@ def vender():
     return render_template('cadproposta.html', form=form)
 
 
-@views.route('/propostas')
-@login_required
-def propostas():
-    propostas = Venda.query.all()
-    return render_template('acproposta.html', propostas=propostas)
+# @views.route('/propostas')
+# @login_required
+# def propostas():
+#     propostas = Venda.query.all()
+#     return render_template('acproposta.html', propostas=propostas)
 
 
 @views.get('/cliente/<cpf>')

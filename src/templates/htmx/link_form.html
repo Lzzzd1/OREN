@@ -22,7 +22,7 @@
           {% for field in form if field.name not in ['cpf', 'csrf_token'] %}
 
           <div>
-            {{ field }}
+            {{ field(value=field.label.text.lower()) }}
             {{field.label}}
           </div>
           {% endfor %}

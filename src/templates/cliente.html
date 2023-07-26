@@ -23,6 +23,10 @@
               <button type="button" class="btn btn-primary">Follow</button>
               <button type="button" class="btn btn-outline-primary ms-1">Message</button>
             </div>
+              <h5>Propostas</h5>
+              {% for i in cliente.links[0].propostas %}
+              <p style="color: orange;">{{ i.nome }}</p>
+              {% endfor %}
           </div>
         </div>
       </div>

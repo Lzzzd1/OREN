@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, StringField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
 from wtforms_sqlalchemy.fields import QuerySelectField
-from src.models import Origem, Campanha, Produto, Users, Cliente
+from src.models import Origem, Campanha, Propostas, Users, Cliente
 
 from src.constants import UFS
 
@@ -69,7 +69,7 @@ def link_form_builder(servicos):
     class LinkForm(LinkFormBase):
         pass
     for i, servico in enumerate(servicos):
-        setattr(LinkForm, f'{servico}', BooleanField(label=str(servico).upper()))
+        setattr(LinkForm, f'{servico}', BooleanField(label=str(servico).upper(), name='check'))
     return LinkForm()
 
 # class VendaMixinForm(ClienteForm, EnderecoForm, PropostaForm):

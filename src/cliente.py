@@ -9,8 +9,8 @@ lead = Blueprint('lead', __name__)
 def get_cliente(endpoint, values):
     hashh = values.pop('hashdd')
     id = current_app.hashid.decode(hashh)
-    if not id:
-        return abort(404)
+    # if not id:
+    #     return abort(404)
     link = Links.query.get_or_404(id[0])
     g.cliente = link.cliente
 
