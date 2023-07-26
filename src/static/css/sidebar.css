@@ -357,7 +357,7 @@ background-color: #0056b3;
 }
 .checkboxes-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .checkboxes-container div {

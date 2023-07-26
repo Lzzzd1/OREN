@@ -16,25 +16,42 @@
         })
     })()
 
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const logoLight = document.getElementById('logo-light');
-    const logoDark = document.getElementById('logo-dark');
-
-    darkModeToggle.addEventListener('click', () => {
-      localStorage.setItem('theme', 'dark');
+    document.addEventListener('DOMContentLoaded', () => {
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const logoLight = document.getElementById('logo-light');
+      const logoDark = document.getElementById('logo-dark');
       const body = document.body;
-      body.classList.toggle('dark-mode');
-      if (body.classList.contains('dark-mode')) {
-        darkModeToggle.textContent = 'Ativar Light Mode';
-        logoLight.style.display = 'none';
-        logoDark.style.display = 'block';
-      } else {
-      localStorage.setItem('theme', 'light');
-        darkModeToggle.textContent = 'Ativar Dark Mode';
-        logoLight.style.display = 'block';
-        logoDark.style.display = 'none';
+    
+      // Função para atualizar o tema com base na preferência do usuário
+      function updateTheme() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          body.classList.add('dark-mode');
+          darkModeToggle.textContent = 'Ativar Light Mode';
+          logoLight.style.display = 'none';
+          logoDark.style.display = 'block';
+        } else {
+          body.classList.remove('dark-mode');
+          darkModeToggle.textContent = 'Ativar Dark Mode';
+          logoLight.style.display = 'block';
+          logoDark.style.display = 'none';
+        }
       }
+    
+      // Adicionar o evento de clique para alternar entre dark mode e light mode, além de salvar a preferência no localStorage
+      darkModeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('theme', 'light');
+        } else {
+          localStorage.setItem('theme', 'dark');
+        }
+        updateTheme();
+      });
+    
+      // Chamar a função de atualização do tema para aplicar a preferência do usuário ao carregar a página
+      updateTheme();
     });
+        
 
     const sidebarDegradeToggle = document.getElementById('sidebar-degrade-toggle');
     const leftSidebar = document.querySelector('.left-sidebar');
