@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
-from src.forms import VendaMixinForm
+from src.forms import link_form_builder
 from src.models import Cliente, Venda
 
 views = Blueprint('views', __name__)
@@ -15,7 +15,9 @@ def index():
 @views.route('/vender')
 @login_required
 def vender():
-    form = VendaMixinForm()
+    servicos = 'FIP FIM FIS FIE FIV PAM PAE PIEDU'.split()
+    print(list(request.form.items()))
+    form = link_form_builder(servicos)
     return render_template('cadproposta.html', form=form)
 
 

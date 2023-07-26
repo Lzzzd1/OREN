@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_htmx import HTMX
 from hashids import Hashids
 from src.auth import configure as auth_config
 from src.views import configure as views_config
@@ -30,6 +31,7 @@ def create_app():
     def load_user(id_):
         return Users.query.get(int(id_))
 
+    app.htmx = HTMX(app)
     hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
     app.hashid = hashids
 

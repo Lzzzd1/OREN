@@ -1,0 +1,46 @@
+<form id="formProposta" class="needs-validation" hx-post="{{url_for('api.gerar_link')}}"
+      hx-target="#teste" novalidate>
+  {{ form.hidden_tag() }}
+  <div class="clientes">
+    <h3 style="text-align: center;">Cliente</h3>
+    <br>
+    <div class="row">
+      <div class="col-md-20">
+        <div class="form-group">
+          {{ form.cpf(class="entrada form-control text-center", placeholder=form.cpf.label.text, required=True) }}
+          {% for erro in form.cpf.errors %}
+          <span id="cpf-error" class="error-message"> {{erro}} </span><br>
+          {% endfor %}
+        </div>
+      </div>
+
+      <h3 style="text-align: center;">Contrato</h3>
+      <br>
+      <br>
+      <div class="col-md-6">
+        <div class="form-group checkboxes-container">
+          {% for field in form if field.name not in ['cpf', 'csrf_token'] %}
+
+          <div>
+            {{ field }}
+            {{field.label}}
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      <div class="" style="text-align: center;">
+        <div id="divBotao" style="display: flex; justify-content: space-evenly">
+          <button class="btn btn-primary" id="Enviar" type="submit">Cadastrar Cliente</button>
+        </div>
+      </div>
+      <div id="teste">
+              {% if link %}
+
+        <p> Link do cliente: <a href="{{link}}">Link!</a></p>
+              {% endif %}
+
+      </div>
+    </div>
+  </div>
+</form>
